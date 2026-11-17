@@ -6,9 +6,17 @@ This directory contains the fix used to run MelonLoader 0.7.3 with Steam build 2
 
 Download the [MelonLoader compatibility fix ZIP](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.3/MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip) from [Releases](https://github.com/Airam-7/DarkestDaysTweaks/releases/tag/v0.1.3).
 
-Close the game, install official MelonLoader 0.7.3 x64, and extract that ZIP into the game root, merging folders and replacing the listed files. The original manual route remains available: copy **the contents of `files/`** into the game root. Do this before the first launch. Start through Steam and let local reference generation finish.
+**The ZIP on NexusMods contains only `Mods/DarkestDaysTweaks.dll`. It does not include these compatibility files.** For a fresh installation, download and apply this fix separately.
 
-This download does not include the mod. Install [Darkest Days Tweaks separately](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.3/DarkestDaysTweaks-0.1.3-Mod.zip) if desired.
+1. Close the game and the loader console.
+2. Install [official MelonLoader 0.7.3 x64](https://github.com/LavaGang/MelonLoader/releases/tag/v0.7.3) and .NET 6 Desktop Runtime x64. **Do not launch the game yet.**
+3. Extract the fix ZIP into the game root, beside `IntoTheDeadOurDarkestDays.exe`. Merge the `MelonLoader/` folder and replace the supplied files listed below. Do not place the archive inside `Mods/` or an extra nested folder.
+4. Extract the mod-only ZIP from NexusMods or [GitHub Releases](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.3/DarkestDaysTweaks-0.1.3-Mod.zip) into the same game root, producing `Mods/DarkestDaysTweaks.dll`.
+5. Start through Steam and let local reference generation finish. Internet access is required for the initial download of Unity reference libraries.
+
+The original manual route remains available: copy **the contents of `files/`** into the game root before the first launch. If a first launch already failed with the original loader dependencies, close the game and console before applying the fix and retrying through Steam.
+
+This fix download does not include the mod. If the same compatibility stack is already installed and working, updating the mod only requires the mod ZIP; do not replace the generator configuration again unnecessarily.
 
 | Installed path | Purpose |
 |---|---|

@@ -2,7 +2,7 @@
 
 Source code and MelonLoader compatibility files for **Into the Dead: Our Darkest Days** on Windows x64.
 
-**The compiled mod and MelonLoader compatibility fix are available as separate downloads in [Releases](https://github.com/Airam-7/DarkestDaysTweaks/releases).** The mod DLL is not stored in the Git source tree. The combined clean installation package is also distributed through NexusMods.
+**NexusMods distributes the mod-only ZIP, `DarkestDaysTweaks-0.1.3-Mod.zip`. It does not include the MelonLoader compatibility fix.** Download the fix separately from [Releases](https://github.com/Airam-7/DarkestDaysTweaks/releases), as described below. Both the compiled mod and the fix are also available as separate Release downloads. The mod DLL is not stored in the Git source tree.
 
 ## Downloads
 
@@ -25,13 +25,13 @@ Version **0.1.3** uses English interface text and settings comments. Fresh insta
 
 ## Installation
 
-1. Close the game and install the **official MelonLoader 0.7.3 x64** and its **.NET 6 Desktop Runtime x64** prerequisite. Get MelonLoader from [LavaGang's official release](https://github.com/LavaGang/MelonLoader/releases/tag/v0.7.3), not from this repository.
-2. Download the **MelonLoader compatibility fix** above and extract it into the game root, next to `IntoTheDeadOurDarkestDays.exe`. Merge folders and replace the compatibility files before the first launch.
-3. Download the separate **Darkest Days Tweaks mod** above and extract it into the same game root. The DLL belongs in `Mods/`.
+1. Close the game and its loader console. Install the **official MelonLoader 0.7.3 x64** and its **.NET 6 Desktop Runtime x64** prerequisite. Get MelonLoader from [LavaGang's official release](https://github.com/LavaGang/MelonLoader/releases/tag/v0.7.3), not from this repository. **Do not launch the game yet.**
+2. Download [**MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip**](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.3/MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip) from GitHub Releases and extract it into the game root, next to `IntoTheDeadOurDarkestDays.exe`. Merge the `MelonLoader/` folder and replace the supplied compatibility files. This is the separate compatibility installation required when using the NexusMods download.
+3. Extract **DarkestDaysTweaks-0.1.3-Mod.zip**, downloaded from NexusMods or the separate mod link above, into the same game root. The result must be `Mods/DarkestDaysTweaks.dll`, not a second nested game or ZIP-name folder.
 4. Start the game through Steam. Internet access is needed for the initial download of Unity reference libraries and generation of local IL2CPP references.
 5. Press **F6**, or click **Mod settings - F6**. Pause the game before changing settings during a run. Choose **Apply and save** to confirm changes.
 
-Alternatively, the **combined clean installation ZIP from NexusMods includes both packages** and can be extracted once after installing official MelonLoader. It contains the same seven installation files as the two Release downloads together.
+**For a fresh installation, use both ZIPs: the mod-only ZIP from NexusMods and the compatibility-fix ZIP from GitHub Releases.** Neither ZIP includes official MelonLoader.
 
 If you need **only the MelonLoader compatibility fix**, use its separate Release download or copy the contents of [`compatibility/files`](compatibility/files) into the game root after installing official MelonLoader 0.7.3. These files do not install the mod.
 

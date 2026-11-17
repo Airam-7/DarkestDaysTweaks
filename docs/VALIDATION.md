@@ -21,7 +21,7 @@ The settings panel does not pause the game or block every underlying gameplay in
 - Retention and execution of the updated Cpp2IL through the shipped generator configuration.
 - Rendering of the complete English settings panel.
 - User confirmation that manual editing, settings saving and the revised menu work.
-- Installation archive restricted to its seven expected files, excluding personal configuration, game binaries, generated references and debug artifacts.
+- Package contents checked: the mod-only ZIP distributed on NexusMods contains one DLL; the separate compatibility ZIP on GitHub Releases contains six files. Neither includes personal configuration, game binaries, generated references or local diagnostic files.
 - Corresponding source/license archive inspection for game binaries and personal paths.
 
 ## Not yet fully validated
