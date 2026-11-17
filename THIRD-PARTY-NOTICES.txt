@@ -1,0 +1,39 @@
+Darkest Days Tweaks repository - third-party components
+
+compatibility/files contains compatibility components for MelonLoader 0.7.3
+and Unity 6000.5.11f1. MelonLoader itself and the compiled mod are not
+redistributed in this repository.
+
+Il2CppInterop.Common.dll / Runtime.dll / HarmonySupport.dll
+Project: https://github.com/BepInEx/Il2CppInterop
+Patch: https://github.com/BepInEx/Il2CppInterop/pull/292
+Source revision: 72a5fd3cefbc580e1311d2e8242673e23e432023
+Copyright: BepInEx, knah and contributors; patch by RTBRuhan and XLG-WSM.
+License: GNU LGPL version 3; GPL version 3 is incorporated by reference.
+Local changes: allow SDK 9 via rollForward=latestMajor; replace a stripped
+MonoField nameof expression with the identical literal method name.
+Rebuilt with assembly version 1.5.1.0 and without embedded debugging paths.
+
+Corresponding modified library source is supplied under
+compatibility/src/Il2CppInterop, with scripts/Build-Compatibility.ps1 and
+build instructions in README.md. Preserve source availability on equivalent
+terms when redistributing the compatibility binaries.
+Users may replace these dynamically linked libraries and reverse engineer
+the combined work for the purpose of debugging modifications to the LGPL
+libraries. No restriction on that activity is imposed by this package.
+
+Cpp2IL.exe
+Project: https://github.com/SamboyCoding/Cpp2IL
+Build reports: 2022.1.0-pr-629.1756+fda4977
+Revision: fda4977b2450c181d6b86a40465f4ad966bda9a9
+Copyright (c) 2020 Sam Byass. License: MIT.
+Unmodified single-file tool from official project CI artifact 13427221023.
+Includes its own .NET runtime; associated runtime license notices are supplied.
+
+TerraFX.Interop.Windows.dll 10.0.22621.2
+https://github.com/terrafx/terrafx.interop.windows
+Copyright (c) Tanner Gooding and Contributors. License: MIT.
+
+Full license texts are supplied in licenses/. The original mod source also
+embeds them into its compiled DLL as LicenseResources. This repository
+contains no original game assemblies, generated game references or assets.
