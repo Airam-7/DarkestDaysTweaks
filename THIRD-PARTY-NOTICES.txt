@@ -1,8 +1,8 @@
 Darkest Days Tweaks repository - third-party components
 
 compatibility/files contains compatibility components for MelonLoader 0.7.3
-and Unity 6000.5.11f1. MelonLoader itself and the compiled mod are not
-redistributed in this repository.
+and Unity 6000.5.11f1. MelonLoader itself is not redistributed. The compiled
+mod is supplied separately in Releases, not stored in the Git source tree.
 
 Il2CppInterop.Common.dll / Runtime.dll / HarmonySupport.dll
 Project: https://github.com/BepInEx/Il2CppInterop

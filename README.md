@@ -2,7 +2,16 @@
 
 Source code and MelonLoader compatibility files for **Into the Dead: Our Darkest Days** on Windows x64.
 
-**The compiled mod is distributed through NexusMods. This repository does not contain `DarkestDaysTweaks.dll` or the mod installation ZIP.**
+**The compiled mod and MelonLoader compatibility fix are available as separate downloads in [Releases](https://github.com/Airam-7/DarkestDaysTweaks/releases).** The mod DLL is not stored in the Git source tree. The combined clean installation package is also distributed through NexusMods.
+
+## Downloads
+
+| Download | Contents |
+|---|---|
+| [MelonLoader compatibility fix](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.3/MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip) | Only the six compatibility files; no mod |
+| [Darkest Days Tweaks 0.1.3](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.3/DarkestDaysTweaks-0.1.3-Mod.zip) | Only `Mods/DarkestDaysTweaks.dll` |
+
+See the [v0.1.3 release page](https://github.com/Airam-7/DarkestDaysTweaks/releases/tag/v0.1.3) for installation details, source archives and validation limits. Official MelonLoader must be downloaded separately.
 
 ## Mod features
 
@@ -17,13 +26,16 @@ Version **0.1.3** uses English interface text and settings comments. Fresh insta
 ## Installation
 
 1. Close the game and install the **official MelonLoader 0.7.3 x64** and its **.NET 6 Desktop Runtime x64** prerequisite. Get MelonLoader from [LavaGang's official release](https://github.com/LavaGang/MelonLoader/releases/tag/v0.7.3), not from this repository.
-2. Install the clean mod package from NexusMods into the game root, next to `IntoTheDeadOurDarkestDays.exe`, preserving its folder structure and replacing the compatibility files.
-3. Start the game through Steam. Internet access is needed for the initial download of Unity reference libraries and generation of local IL2CPP references.
-4. Press **F6**, or click **Mod settings - F6**. Pause the game before changing settings during a run. Choose **Apply and save** to confirm changes.
+2. Download the **MelonLoader compatibility fix** above and extract it into the game root, next to `IntoTheDeadOurDarkestDays.exe`. Merge folders and replace the compatibility files before the first launch.
+3. Download the separate **Darkest Days Tweaks mod** above and extract it into the same game root. The DLL belongs in `Mods/`.
+4. Start the game through Steam. Internet access is needed for the initial download of Unity reference libraries and generation of local IL2CPP references.
+5. Press **F6**, or click **Mod settings - F6**. Pause the game before changing settings during a run. Choose **Apply and save** to confirm changes.
 
-If you need **only the MelonLoader compatibility fix**, copy the contents of [`compatibility/files`](compatibility/files) into the game root after installing official MelonLoader 0.7.3. These files do not install the mod.
+Alternatively, the **combined clean installation ZIP from NexusMods includes both packages** and can be extracted once after installing official MelonLoader. It contains the same seven installation files as the two Release downloads together.
 
-The generated settings file is `UserData/DarkestDaysTweaks.txt`. Existing values are preserved when updating the mod. An already working installation of this exact compatibility stack only needs the newer mod DLL from NexusMods; there is no need to replace the generator configuration again.
+If you need **only the MelonLoader compatibility fix**, use its separate Release download or copy the contents of [`compatibility/files`](compatibility/files) into the game root after installing official MelonLoader 0.7.3. These files do not install the mod.
+
+The generated settings file is `UserData/DarkestDaysTweaks.txt`. Existing values are preserved when updating the mod. An already working installation of this exact compatibility stack only needs the separate mod download from Releases or the newer mod DLL from NexusMods; there is no need to replace the generator configuration again.
 
 ## Supported configuration
 

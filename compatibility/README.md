@@ -4,7 +4,11 @@ This directory contains the fix used to run MelonLoader 0.7.3 with Steam build 2
 
 ## Apply the fix
 
-Close the game, install official MelonLoader 0.7.3 x64, and copy **the contents of `files/`** into the game root, merging folders and replacing the listed files. Do this before the first launch. Start through Steam and let local reference generation finish.
+Download the [MelonLoader compatibility fix ZIP](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.3/MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip) from [Releases](https://github.com/Airam-7/DarkestDaysTweaks/releases/tag/v0.1.3).
+
+Close the game, install official MelonLoader 0.7.3 x64, and extract that ZIP into the game root, merging folders and replacing the listed files. The original manual route remains available: copy **the contents of `files/`** into the game root. Do this before the first launch. Start through Steam and let local reference generation finish.
+
+This download does not include the mod. Install [Darkest Days Tweaks separately](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.3/DarkestDaysTweaks-0.1.3-Mod.zip) if desired.
 
 | Installed path | Purpose |
 |---|---|
