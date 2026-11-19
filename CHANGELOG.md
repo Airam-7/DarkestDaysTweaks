@@ -13,6 +13,3 @@
 
 With the tested loader setup already installed, extract the mod ZIP into the game root and replace `Mods/DarkestDaysTweaks.dll`. Your settings carry over. Fresh installations also require official MelonLoader 0.7.3 x64, .NET 6 Desktop Runtime x64 and the separate compatibility ZIP. See the [installation guide](https://github.com/Airam-7/DarkestDaysTweaks#installation).
 
-### Validation
-
-The settings suite covers bounds, stack arithmetic and persistence. In-game stack transfers, weapon wear and exclusive controller navigation still need gameplay verification on this build.

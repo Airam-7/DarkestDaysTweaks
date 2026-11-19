@@ -26,7 +26,6 @@ Opening the panel pushes the game's disabled action set at critical priority and
 
 ## Not yet fully validated
 
-- Physical controller operation and gameplay confirmation of the revised stack and wear calculations in 0.1.4.
 - Every weapon type, wear event and difficulty/trait combination.
 - Zombie response to all walking/running situations.
 - Save/load behavior with enlarged stacks, particularly after lowering the multiplier or uninstalling.
