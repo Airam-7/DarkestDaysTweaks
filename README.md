@@ -2,34 +2,34 @@
 
 Source code and MelonLoader compatibility files for **Into the Dead: Our Darkest Days** on Windows x64.
 
-**NexusMods distributes the mod-only ZIP, `DarkestDaysTweaks-0.1.3-Mod.zip`. It does not include the MelonLoader compatibility fix.** Download the fix separately from [Releases](https://github.com/Airam-7/DarkestDaysTweaks/releases), as described below. Both the compiled mod and the fix are also available as separate Release downloads. The mod DLL is not stored in the Git source tree.
+**NexusMods distributes the mod-only ZIP. It does not include the MelonLoader compatibility fix.** Download the fix separately from [Releases](https://github.com/Airam-7/DarkestDaysTweaks/releases), as described below. Both the compiled mod and the fix are also available as separate Release downloads. The mod DLL is not stored in the Git source tree.
 
 ## Downloads
 
 | Download | Contents |
 |---|---|
-| [MelonLoader compatibility fix](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.3/MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip) | Only the six compatibility files; no mod |
-| [Darkest Days Tweaks 0.1.3](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.3/DarkestDaysTweaks-0.1.3-Mod.zip) | Only `Mods/DarkestDaysTweaks.dll` |
+| [MelonLoader compatibility fix](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.4/MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip) | Only the six compatibility files; no mod |
+| [Darkest Days Tweaks 0.1.4](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.4/DarkestDaysTweaks-0.1.4-Mod.zip) | Only `Mods/DarkestDaysTweaks.dll` |
 
-See the [v0.1.3 release page](https://github.com/Airam-7/DarkestDaysTweaks/releases/tag/v0.1.3) for installation details, source archives and validation limits. Official MelonLoader must be downloaded separately.
+See the [v0.1.4 release page](https://github.com/Airam-7/DarkestDaysTweaks/releases/tag/v0.1.4) and the [changelog](CHANGELOG.md) for changes and validation limits. Official MelonLoader must be downloaded separately.
 
 ## Mod features
 
 - Inventory stack size multiplier, from 1 to 1,000.
 - Separate melee and firearm durability multipliers, from 1 to 1,000,000.
 - Independent silent walking and silent running ON/OFF switches for footstep detection; audible footsteps are unchanged.
-- F6 settings panel, manual numeric input, cumulative +2 / +5 / +10 buttons, and persistent settings.
-- Reset to 1.0 restores the multipliers and switches silent footsteps OFF.
+- Open settings with F6 or L3+R3. Drag a slider or click its number for exact input. Use the D-pad or left stick to navigate and adjust, A / Cross to select, and B / Circle to close.
+- **Restore settings** restores the multipliers and switches silent footsteps OFF.
 
-Version **0.1.3** uses English interface text and settings comments. Fresh installations default to vanilla values.
+Version **0.1.4** uses English interface text and settings comments. Fresh installations default to vanilla values.
 
 ## Installation
 
 1. Close the game and its loader console. Install the **official MelonLoader 0.7.3 x64** and its **.NET 6 Desktop Runtime x64** prerequisite. Get MelonLoader from [LavaGang's official release](https://github.com/LavaGang/MelonLoader/releases/tag/v0.7.3), not from this repository. **Do not launch the game yet.**
-2. Download [**MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip**](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.3/MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip) from GitHub Releases and extract it into the game root, next to `IntoTheDeadOurDarkestDays.exe`. Merge the `MelonLoader/` folder and replace the supplied compatibility files. This is the separate compatibility installation required when using the NexusMods download.
-3. Extract **DarkestDaysTweaks-0.1.3-Mod.zip**, downloaded from NexusMods or the separate mod link above, into the same game root. The result must be `Mods/DarkestDaysTweaks.dll`, not a second nested game or ZIP-name folder.
+2. Download [**MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip**](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.4/MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip) from GitHub Releases and extract it into the game root, next to `IntoTheDeadOurDarkestDays.exe`. Merge the `MelonLoader/` folder and replace the supplied compatibility files. This is the separate compatibility installation required when using the NexusMods download.
+3. Extract **DarkestDaysTweaks-0.1.4-Mod.zip**, downloaded from NexusMods or the separate mod link above, into the same game root. The result must be `Mods/DarkestDaysTweaks.dll`, not a second nested game or ZIP-name folder.
 4. Start the game through Steam. Internet access is needed for the initial download of Unity reference libraries and generation of local IL2CPP references.
-5. Press **F6**, or click **Mod settings - F6**. Pause the game before changing settings during a run. Choose **Apply and save** to confirm changes.
+5. Press **F6** or **L3+R3**, or click **Mod settings - F6 / L3+R3**. Pause the game before changing settings during a run. Choose **Apply and save** to confirm changes.
 
 **For a fresh installation, use both ZIPs: the mod-only ZIP from NexusMods and the compatibility-fix ZIP from GitHub Releases.** Neither ZIP includes official MelonLoader.
 
@@ -46,7 +46,7 @@ The generated settings file is `UserData/DarkestDaysTweaks.txt`. Existing values
 | In-game version | v0.19.1.22694 |
 | Unity | 6000.5.11f1 / metadata 107 |
 | MelonLoader | 0.7.3 Open-Beta x64 |
-| Mod source | 0.1.3 |
+| Mod source | 0.1.4 |
 
 Compatibility with other game builds, loader versions, platforms or other mods is not claimed.
 
