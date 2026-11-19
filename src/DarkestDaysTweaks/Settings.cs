@@ -6,6 +6,8 @@ public sealed class Settings
 {
     public const double MaxStacks = 1000, MaxEase = 1000000;
     public double StackMultiplier = 1, MeleeDurability = 1, FirearmDurability = 1;
+    public const int MaxSlots = 32;
+    public int SurvivorSlots = 1;
     public bool SilentWalk, SilentRun;
 
     public static double Clamp(double value, double max) => double.IsFinite(value) ? Math.Clamp(value, 1, max) : 1;
@@ -18,6 +20,7 @@ public sealed class Settings
     }
     public void Validate()
     {
+        SurvivorSlots = Math.Clamp(SurvivorSlots, 1, MaxSlots);
         StackMultiplier = Clamp(StackMultiplier, MaxStacks);
         MeleeDurability = Clamp(MeleeDurability, MaxEase);
         FirearmDurability = Clamp(FirearmDurability, MaxEase);
@@ -40,6 +43,7 @@ public sealed class Settings
             if (!TryNumber(value, out var n)) continue;
             switch (key)
             {
+                case "SurvivorSlots": s.SurvivorSlots = (int)Clamp(n, MaxSlots); break;
                 case "StackMultiplier": s.StackMultiplier = n; break;
                 case "MeleeDurability": s.MeleeDurability = n; break;
                 case "FirearmDurability": s.FirearmDurability = n; break;
@@ -57,6 +61,7 @@ public sealed class Settings
             "# Stacks: 1..1000 (increased stack cap: 1000000). Durability: 1..1000000.\n" +
             "# Silent footsteps: detection only; audible footsteps are unchanged. true = ON.\n" +
             $"StackMultiplier={N(StackMultiplier)}\nMeleeDurability={N(MeleeDurability)}\nFirearmDurability={N(FirearmDurability)}\n" +
+            $"SurvivorSlots={SurvivorSlots}\n" +
             $"SilentWalk={SilentWalk.ToString().ToLowerInvariant()}\nSilentRun={SilentRun.ToString().ToLowerInvariant()}\n";
         File.WriteAllText(path + ".tmp", text);
         File.Move(path + ".tmp", path, true);

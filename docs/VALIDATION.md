@@ -15,7 +15,7 @@ Opening the panel pushes the game's disabled action set at critical priority and
 ## Checked locally
 
 - Release mod compilation, with no errors.
-- Eleven automated settings regression checks.
+- Thirteen automated settings regression checks.
 - Steam startup with the corrected loader dependencies.
 - Generation of fresh IL2CPP references without relying on the old generated assembly directory.
 - Retention and execution of the updated Cpp2IL through the shipped generator configuration.

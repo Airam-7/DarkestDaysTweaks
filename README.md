@@ -8,26 +8,27 @@ Source code and MelonLoader compatibility files for **Into the Dead: Our Darkest
 
 | Download | Contents |
 |---|---|
-| [MelonLoader compatibility fix](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.4/MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip) | Only the six compatibility files; no mod |
-| [Darkest Days Tweaks 0.1.4](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.4/DarkestDaysTweaks-0.1.4-Mod.zip) | Only `Mods/DarkestDaysTweaks.dll` |
+| [MelonLoader compatibility fix](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.5/MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip) | Only the six compatibility files; no mod |
+| [Darkest Days Tweaks 0.1.5](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.5/DarkestDaysTweaks-0.1.5-Mod.zip) | Only `Mods/DarkestDaysTweaks.dll` |
 
-See the [v0.1.4 release page](https://github.com/Airam-7/DarkestDaysTweaks/releases/tag/v0.1.4) and the [changelog](CHANGELOG.md) for changes and validation limits. Official MelonLoader must be downloaded separately.
+See the [v0.1.5 release page](https://github.com/Airam-7/DarkestDaysTweaks/releases/tag/v0.1.5) and the [changelog](CHANGELOG.md) for changes and validation limits. Official MelonLoader must be downloaded separately.
 
 ## Mod features
 
+- Survivor backpack capacity, configurable up to 32 total slots. Set 1 for vanilla capacity. A survivor with 11 slots gains four when set to 15.
 - Inventory stack size multiplier, from 1 to 1,000.
 - Separate melee and firearm durability multipliers, from 1 to 1,000,000.
 - Independent silent walking and silent running ON/OFF switches for footstep detection; audible footsteps are unchanged.
 - Open settings with F6 or L3+R3. Drag a slider or click its number for exact input. Use the D-pad or left stick to navigate and adjust, A / Cross to select, and B / Circle to close.
 - **Restore settings** restores the multipliers and switches silent footsteps OFF.
 
-Version **0.1.4** uses English interface text and settings comments. Fresh installations default to vanilla values.
+Version **0.1.5** uses English interface text and settings comments. Fresh installations default to vanilla values.
 
 ## Installation
 
 1. Close the game and its loader console. Install the **official MelonLoader 0.7.3 x64** and its **.NET 6 Desktop Runtime x64** prerequisite. Get MelonLoader from [LavaGang's official release](https://github.com/LavaGang/MelonLoader/releases/tag/v0.7.3), not from this repository. **Do not launch the game yet.**
-2. Download [**MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip**](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.4/MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip) from GitHub Releases and extract it into the game root, next to `IntoTheDeadOurDarkestDays.exe`. Merge the `MelonLoader/` folder and replace the supplied compatibility files. This is the separate compatibility installation required when using the NexusMods download.
-3. Extract **DarkestDaysTweaks-0.1.4-Mod.zip**, downloaded from NexusMods or the separate mod link above, into the same game root. The result must be `Mods/DarkestDaysTweaks.dll`, not a second nested game or ZIP-name folder.
+2. Download [**MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip**](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.5/MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip) from GitHub Releases and extract it into the game root, next to `IntoTheDeadOurDarkestDays.exe`. Merge the `MelonLoader/` folder and replace the supplied compatibility files. This is the separate compatibility installation required when using the NexusMods download.
+3. Extract **DarkestDaysTweaks-0.1.5-Mod.zip**, downloaded from NexusMods or the separate mod link above, into the same game root. The result must be `Mods/DarkestDaysTweaks.dll`, not a second nested game or ZIP-name folder.
 4. Start the game through Steam. Internet access is needed for the initial download of Unity reference libraries and generation of local IL2CPP references.
 5. Press **F6** or **L3+R3**, or click **Mod settings - F6 / L3+R3**. Pause the game before changing settings during a run. Choose **Apply and save** to confirm changes.
 
@@ -46,7 +47,7 @@ The generated settings file is `UserData/DarkestDaysTweaks.txt`. Existing values
 | In-game version | v0.19.1.22694 |
 | Unity | 6000.5.11f1 / metadata 107 |
 | MelonLoader | 0.7.3 Open-Beta x64 |
-| Mod source | 0.1.4 |
+| Mod source | 0.1.5 |
 
 Compatibility with other game builds, loader versions, platforms or other mods is not claimed.
 
@@ -78,7 +79,7 @@ Run the small settings regression suite without installing the game or MelonLoad
 dotnet run --project tests/SettingsChecks -c Release
 ```
 
-The eleven checks cover native defaults, increased stacks, rounding, native sentinel values, overflow, numeric input, bounds and independent ON/OFF persistence. This repository deliberately excludes local diagnostic helpers, dumps, logs, temporary assets and personal test data.
+The thirteen checks cover native defaults, increased stacks, rounding, native sentinel values, overflow, numeric input, bounds and independent ON/OFF persistence. This repository deliberately excludes local diagnostic helpers, dumps, logs, temporary assets and personal test data.
 
 Steam startup, reference regeneration without the old generated assemblies, the English panel, manual editing and settings persistence were checked locally. Full weapon-by-weapon gameplay, zombie response and save/load coverage remain incomplete. See [validation and behavior limits](docs/VALIDATION.md).
 

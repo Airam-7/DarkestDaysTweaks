@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.5
+
+- Added **Survivor inventory slots** to the settings panel. Set a minimum backpack capacity of up to **32 total slots** per survivor. The default (**1**) keeps vanilla capacity.
+- Lowering the setting keeps occupied slots accessible.
+
 ## 0.1.4
 
 - Revised inventory stack calculations for inventories and individual stacks. Nested calculations apply the multiplier once.

@@ -24,8 +24,11 @@ try
     var settings = Settings.Load(path);
     Check(settings.StackMultiplier == 1 && settings.MeleeDurability == 1 && settings.FirearmDurability == Settings.MaxEase,
         "file inputs clamped to supported range");
+    Check(settings.SurvivorSlots == 1, "old settings preserve native inventory slots");
+    settings.SurvivorSlots = int.MaxValue;
     settings.Save(path);
     var loaded = Settings.Load(path);
+    Check(loaded.SurvivorSlots == 32, "slot ceiling persists across reload");
     Check(loaded.SilentWalk && !loaded.SilentRun, "independent ON/OFF persistence");
     Check(!File.ReadAllText(path).Contains("Quietness"), "legacy numeric stealth settings removed on save");
 }
@@ -34,4 +37,4 @@ finally
     if (File.Exists(path)) File.Delete(path);
     Directory.Delete(directory);
 }
-Console.WriteLine("11 checks passed.");
+Console.WriteLine("All checks passed.");
