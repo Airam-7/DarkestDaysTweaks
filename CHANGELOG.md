@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.6
+
+- Added an **Experience gain** multiplier from **×1 (vanilla)** to **×10** for future survivor XP gains.
+
 ## 0.1.5
 
 - Added **Survivor inventory slots** to the settings panel. Set a minimum backpack capacity of up to **32 total slots** per survivor. The default (**1**) keeps vanilla capacity.

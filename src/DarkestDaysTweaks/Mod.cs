@@ -12,7 +12,7 @@ using Il2CppDRS.Game.Character.States.ConcreteStates;
 using Il2CppDRS.Database.Noise;
 using Guid = Il2CppDRS.SerializableGuid.SerializableGuid;
 
-[assembly: MelonInfo(typeof(DarkestDaysTweaks.Mod), "Darkest Days Tweaks", "0.1.5", "Airam")]
+[assembly: MelonInfo(typeof(DarkestDaysTweaks.Mod), "Darkest Days Tweaks", "0.1.6", "Airam")]
 [assembly: MelonGame("PikPok", "IntoTheDeadOurDarkestDays")]
 
 namespace DarkestDaysTweaks;
@@ -31,7 +31,7 @@ public sealed class Mod : MelonMod
     private float repeatAt;
     private bool wasConfirm, wasBack, padFocus;
     private int draggedSlider = -1;
-    private string[] edits = new string[4];
+    private string[] edits = new string[5];
     private bool walk, run;
     private string status = "";
     private bool guiErrorLogged;
@@ -54,6 +54,7 @@ public sealed class Mod : MelonMod
             PatchSlots(typeof(Inventory), "SetMaxSize", nameof(SurvivorSlots.BeforeResize), true);
             PatchSlots(typeof(Inventory), "System_IDisposable_Dispose", nameof(SurvivorSlots.Forget), true);
             PatchSlots(typeof(Il2CppDRS.Game.Survivor.Survivor), "DRS_Utils_Framework_ISimulatable_Simulate", nameof(SurvivorSlots.Update), false);
+            Patch(typeof(Il2CppDRS.Game.Survivor.Progression.SurvivorProgressionSystem), "DRS_Game_Survivor_Progression_IProgressionHandler_AddXP", nameof(ScaleExperience), null);
             Patch(typeof(UnityEngine.EventSystems.EventSystem), "Update", nameof(AllowGameUI), null);
             foreach (var calculator in new[] {typeof(Inventory), typeof(InventoryStack), typeof(Il2CppDRS.Database.Balancing.InventoryBalancingData)})
                 Patch(calculator, "GetAdjustedMaxStack", nameof(StackPrefix), nameof(StackPostfix));
@@ -69,6 +70,12 @@ public sealed class Mod : MelonMod
             LoggerInstance.Error(ex);
         }
     }
+    private static void ScaleExperience(ref float __0)
+    {
+        if (__0 > 0 && float.IsFinite(__0) && Current.ExperienceMultiplier > 1)
+            __0 = (float)Math.Min(float.MaxValue, __0 * Current.ExperienceMultiplier);
+    }
+
     private static bool AllowGameUI() => !capturing;
     private void CaptureGameplay()
     {
@@ -188,7 +195,7 @@ public sealed class Mod : MelonMod
     private void SyncEdits()
     {
         activeField=-1;
-        edits = new[] {Current.StackMultiplier, Current.MeleeDurability, Current.FirearmDurability, Current.SurvivorSlots}
+        edits = new[] {Current.StackMultiplier, Current.MeleeDurability, Current.FirearmDurability, Current.SurvivorSlots, Current.ExperienceMultiplier}
             .Select(x => x.ToString("0.######", System.Globalization.CultureInfo.InvariantCulture)).ToArray();
         walk = Current.SilentWalk; run = Current.SilentRun;
     }
@@ -202,8 +209,8 @@ public sealed class Mod : MelonMod
     }
     private void Draw()
     {
-        float scale=Math.Min(1.5f,Math.Min((Screen.width-24)/1000f,(Screen.height-24)/580f));
-        float x=(Screen.width-1000*scale)/2,y=(Screen.height-642*scale)/2;
+        float scale=Math.Min(1.5f,Math.Min((Screen.width-24)/1000f,(Screen.height-24)/704f));
+        float x=(Screen.width-1000*scale)/2,y=(Screen.height-704*scale)/2;
         Rect R(float px,float py,float w,float h)=>new(x+px*scale,y+py*scale,w*scale,h*scale);
         labelStyle ??=CopyStyle(GUI.skin.label);
         buttonStyle ??=CopyStyle(GUI.skin.button);
@@ -218,7 +225,7 @@ public sealed class Mod : MelonMod
         smallStyle.fontSize=(int)(16*scale);titleStyle.fontSize=(int)(26*scale);
         var previous=GUI.color;
         GUI.color=new Color(0.045f,0.055f,0.07f,0.98f);
-        GUI.Box(R(0,0,1000,642),"",panelStyle);
+        GUI.Box(R(0,0,1000,704),"",panelStyle);
         GUI.color=previous;
         GUI.Label(R(28,18,930,40),"DARKEST DAYS TWEAKS  |  F6 or L3 + R3",titleStyle);
         GUI.Label(R(28,66,945,30),"1.0 = vanilla. Higher values increase capacity or weapon lifespan.",labelStyle);
@@ -226,14 +233,14 @@ public sealed class Mod : MelonMod
         if (Event.current.type == EventType.MouseDown) padFocus = false;
         if (padFocus)
         {
-            Rect marker = selected < 4 ? R(12,155+selected*62,6,36)
-                : selected < 6 ? R(selected==4 ? 17 : 501,427,6,38)
-                : R(17+(selected-6)*244,537,6,42);
+            Rect marker = selected < 5 ? R(12,155+selected*62,6,36)
+                : selected < 7 ? R(selected==5 ? 17 : 501,489,6,38)
+                : R(17+(selected-7)*244,599,6,42);
             GUI.Box(marker,"",editStyle);
         }
         EditNumber();
-        var labels = new[] {"Inventory stack size", "Melee weapon durability", "Firearm durability", "Survivor inventory slots"};
-        for (int i=0;i<4;i++)
+        var labels = new[] {"Inventory stack size", "Melee weapon durability", "Firearm durability", "Survivor inventory slots", "Experience gain"};
+        for (int i=0;i<5;i++)
         {
             float row=155+i*62;
             GUI.Label(R(28,row,350,34),labels[i],labelStyle);
@@ -243,36 +250,36 @@ public sealed class Mod : MelonMod
             GUI.backgroundColor=oldBackground;
             DrawSlider(i, R(610,row,340,36));
             GUI.Label(R(390,row+36,215,24),activeField==i ? "Type a new value" : "Click to edit",smallStyle);
-            GUI.Label(R(610,row+36,350,24),i==3 ? "1 = vanilla; up to 32 total slots" : i==0 ? "Limit: 1,000x (1M per stack)" : "Limit: 1,000,000x",smallStyle);
+            GUI.Label(R(610,row+36,350,24),i==4 ? "Limit: 10x" : i==3 ? "1 = vanilla; up to 32 total slots" : i==0 ? "Limit: 1,000x (1M per stack)" : "Limit: 1,000,000x",smallStyle);
         }
-        if(GUI.Button(R(28,427,460,38),$"Silent walking: {(walk ? "ON" : "OFF")}",buttonStyle))walk=!walk;
-        if(GUI.Button(R(512,427,460,38),$"Silent running: {(run ? "ON" : "OFF")}",buttonStyle))run=!run;
-        GUI.Label(R(28,477,945,28),"ON: suppress footstep detection. OFF: vanilla behavior. Footstep audio is unchanged.",smallStyle);
-        GUI.Label(R(28,503,945,28),"Pause the game before changing settings during a run.",smallStyle);
-        if (GUI.Button(R(28,537,230,42), "Apply and save",buttonStyle)) Apply();
-        if (GUI.Button(R(272,537,230,42), "Reload file",buttonStyle))
+        if(GUI.Button(R(28,489,460,38),$"Silent walking: {(walk ? "ON" : "OFF")}",buttonStyle))walk=!walk;
+        if(GUI.Button(R(512,489,460,38),$"Silent running: {(run ? "ON" : "OFF")}",buttonStyle))run=!run;
+        GUI.Label(R(28,539,945,28),"ON: suppress footstep detection. OFF: vanilla behavior. Footstep audio is unchanged.",smallStyle);
+        GUI.Label(R(28,565,945,28),"Pause the game before changing settings during a run.",smallStyle);
+        if (GUI.Button(R(28,599,230,42), "Apply and save",buttonStyle)) Apply();
+        if (GUI.Button(R(272,599,230,42), "Reload file",buttonStyle))
             Reload();
-        if (GUI.Button(R(516,537,230,42), "Restore settings",buttonStyle)) ResetValues();
-        if (GUI.Button(R(760,537,212,42), "Close",buttonStyle)) Close();
-        GUI.Label(R(28,587,945,27),status,smallStyle);
-        GUI.Label(R(28,614,945,25),$"Events: stacks {StackCalls} | melee {MeleeCalls} | firearms {FirearmCalls} | footsteps {WalkCalls}/{RunCalls}",smallStyle);
+        if (GUI.Button(R(516,599,230,42), "Restore settings",buttonStyle)) ResetValues();
+        if (GUI.Button(R(760,599,212,42), "Close",buttonStyle)) Close();
+        GUI.Label(R(28,649,945,27),status,smallStyle);
+        GUI.Label(R(28,676,945,25),$"Events: stacks {StackCalls} | melee {MeleeCalls} | firearms {FirearmCalls} | footsteps {WalkCalls}/{RunCalls}",smallStyle);
     }
     private void Reload()
     {
         try { Current = Settings.Load(configPath); SyncEdits(); status="Settings file reloaded."; }
         catch (Exception ex) { status="Could not read the settings file."; LoggerInstance.Error(ex); }
     }
-    private void ResetValues() { edits = new[]{"1","1","1","1"}; walk=run=false; Apply(); }
+    private void ResetValues() { edits = new[]{"1","1","1","1","1"}; walk=run=false; Apply(); }
     private void ActivateSelected()
     {
         switch (selected)
         {
-            case 4: walk = !walk; break;
-            case 5: run = !run; break;
-            case 6: Apply(); break;
-            case 7: Reload(); break;
-            case 8: ResetValues(); break;
-            case 9: Close(); break;
+            case 5: walk = !walk; break;
+            case 6: run = !run; break;
+            case 7: Apply(); break;
+            case 8: Reload(); break;
+            case 9: ResetValues(); break;
+            case 10: Close(); break;
         }
     }
     private void Navigate(UnityEngine.InputSystem.Gamepad pad)
@@ -289,16 +296,16 @@ public sealed class Mod : MelonMod
         repeatAt = now + (repeat ? .12f : .4f);
         padFocus = true;
         activeField = -1;
-        if (direction == 1) selected = selected >= 6 ? (selected >= 8 ? 5 : 4) : selected >= 4 ? 3 : Math.Max(0, selected-1);
-        else if (direction == 2) selected = selected >= 6 ? selected : selected == 5 ? 8 : selected == 4 ? 6 : selected+1;
+        if (direction == 1) selected = selected >= 7 ? (selected >= 9 ? 6 : 5) : selected >= 5 ? 4 : Math.Max(0, selected-1);
+        else if (direction == 2) selected = selected >= 7 ? selected : selected == 6 ? 9 : selected == 5 ? 7 : selected+1;
         else
         {
             int sign = direction == 3 ? -1 : 1;
-            if (selected >= 4)
-                selected = selected <= 5 ? Math.Clamp(selected+sign,4,5) : Math.Clamp(selected+sign,6,9);
+            if (selected >= 5)
+                selected = selected <= 6 ? Math.Clamp(selected+sign,5,6) : Math.Clamp(selected+sign,7,10);
             else
             {
-                double max = selected == 3 ? Settings.MaxSlots : selected == 0 ? Settings.MaxStacks : Settings.MaxEase;
+                double max = selected == 4 ? Settings.MaxExperience : selected == 3 ? Settings.MaxSlots : selected == 0 ? Settings.MaxStacks : Settings.MaxEase;
                 Settings.TryNumber(edits[selected], out var value);
                 value = Settings.Clamp(value,max);
                 double step = Math.Max(1, Math.Pow(10, Math.Floor(Math.Log10(sign < 0 ? Math.Max(1,value-1) : value))-1));
@@ -312,7 +319,7 @@ public sealed class Mod : MelonMod
         var e=Event.current;
         if(e.type!=EventType.KeyDown)return;
         if(e.keyCode==KeyCode.Return || e.keyCode==KeyCode.KeypadEnter || e.keyCode==KeyCode.Escape){activeField=-1;e.Use();return;}
-        if(e.keyCode==KeyCode.Tab){activeField=(activeField+1)%4;selectAll=true;e.Use();return;}
+        if(e.keyCode==KeyCode.Tab){activeField=(activeField+1)%5;selectAll=true;e.Use();return;}
         if(e.keyCode==KeyCode.A && e.control){selectAll=true;e.Use();return;}
         if(e.keyCode==KeyCode.Backspace || e.keyCode==KeyCode.Delete)
         {edits[activeField]=selectAll || edits[activeField].Length==0 ? "" : edits[activeField][..^1];selectAll=false;e.Use();return;}
@@ -329,7 +336,7 @@ public sealed class Mod : MelonMod
     }
     private void DrawSlider(int index, Rect bounds)
     {
-        double maximum = index == 3 ? Settings.MaxSlots : index == 0 ? Settings.MaxStacks : Settings.MaxEase;
+        double maximum = index == 4 ? Settings.MaxExperience : index == 3 ? Settings.MaxSlots : index == 0 ? Settings.MaxStacks : Settings.MaxEase;
         var e = Event.current;
         float knob = bounds.height * 0.5f;
         float travel = bounds.width - knob;
@@ -351,11 +358,11 @@ public sealed class Mod : MelonMod
     }
     private void Apply()
     {
-        var numbers = new double[4];
-        for(int i=0;i<4;i++)
+        var numbers = new double[5];
+        for(int i=0;i<5;i++)
             if (!Settings.TryNumber(edits[i], out numbers[i]) || numbers[i]<1)
             { status="Enter valid numbers greater than or equal to 1.0."; return; }
-        var updated = new Settings {StackMultiplier=numbers[0], MeleeDurability=numbers[1], FirearmDurability=numbers[2], SurvivorSlots=(int)Settings.Clamp(numbers[3],Settings.MaxSlots), SilentWalk=walk, SilentRun=run};
+        var updated = new Settings {StackMultiplier=numbers[0], MeleeDurability=numbers[1], FirearmDurability=numbers[2], SurvivorSlots=(int)Settings.Clamp(numbers[3],Settings.MaxSlots), ExperienceMultiplier=numbers[4], SilentWalk=walk, SilentRun=run};
         try
         {
             updated.Save(configPath); Current=updated; SyncEdits();

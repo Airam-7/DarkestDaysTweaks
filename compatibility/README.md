@@ -4,14 +4,14 @@ This directory contains the fix used to run MelonLoader 0.7.3 with Steam build 2
 
 ## Apply the fix
 
-Download the [MelonLoader compatibility fix ZIP](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.5/MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip) from [Releases](https://github.com/Airam-7/DarkestDaysTweaks/releases/tag/v0.1.5).
+Download the [MelonLoader compatibility fix ZIP](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.6/MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip) from [Releases](https://github.com/Airam-7/DarkestDaysTweaks/releases/tag/v0.1.6).
 
 **The ZIP on NexusMods contains only `Mods/DarkestDaysTweaks.dll`. It does not include these compatibility files.** For a fresh installation, download and apply this fix separately.
 
 1. Close the game and the loader console.
 2. Install [official MelonLoader 0.7.3 x64](https://github.com/LavaGang/MelonLoader/releases/tag/v0.7.3) and .NET 6 Desktop Runtime x64. **Do not launch the game yet.**
 3. Extract the fix ZIP into the game root, beside `IntoTheDeadOurDarkestDays.exe`. Merge the `MelonLoader/` folder and replace the supplied files listed below. Do not place the archive inside `Mods/` or an extra nested folder.
-4. Extract the mod-only ZIP from NexusMods or [GitHub Releases](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.5/DarkestDaysTweaks-0.1.5-Mod.zip) into the same game root, producing `Mods/DarkestDaysTweaks.dll`.
+4. Extract the mod-only ZIP from NexusMods or [GitHub Releases](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.6/DarkestDaysTweaks-0.1.6-Mod.zip) into the same game root, producing `Mods/DarkestDaysTweaks.dll`.
 5. Start through Steam and let local reference generation finish. Internet access is required for the initial download of Unity reference libraries.
 
 The original manual route remains available: copy **the contents of `files/`** into the game root before the first launch. If a first launch already failed with the original loader dependencies, close the game and console before applying the fix and retrying through Steam.
