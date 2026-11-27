@@ -8,10 +8,10 @@ Source code and MelonLoader compatibility files for **Into the Dead: Our Darkest
 
 | Download | Contents |
 |---|---|
-| [MelonLoader compatibility fix](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.6/MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip) | Only the six compatibility files; no mod |
-| [Darkest Days Tweaks 0.1.6](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.6/DarkestDaysTweaks-0.1.6-Mod.zip) | Only `Mods/DarkestDaysTweaks.dll` |
+| [MelonLoader compatibility fix](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.7/MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip) | Only the six compatibility files; no mod |
+| [Darkest Days Tweaks 0.1.7](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.7/DarkestDaysTweaks-0.1.7-Mod.zip) | Only `Mods/DarkestDaysTweaks.dll` |
 
-See the [v0.1.6 release page](https://github.com/Airam-7/DarkestDaysTweaks/releases/tag/v0.1.6) and the [changelog](CHANGELOG.md) for changes and validation limits. Official MelonLoader must be downloaded separately.
+See the [v0.1.7 release page](https://github.com/Airam-7/DarkestDaysTweaks/releases/tag/v0.1.7) and the [changelog](CHANGELOG.md) for changes. Official MelonLoader must be downloaded separately.
 
 ## Mod features
 
@@ -20,16 +20,27 @@ See the [v0.1.6 release page](https://github.com/Airam-7/DarkestDaysTweaks/relea
 - Inventory stack size multiplier, from 1 to 1,000.
 - Separate melee and firearm durability multipliers, from 1 to 1,000,000.
 - Independent silent walking and silent running ON/OFF switches for footstep detection; audible footsteps are unchanged.
-- Open settings with F6 or L3+R3. Drag a slider or click its number for exact input. Use the D-pad or left stick to navigate and adjust, A / Cross to select, and B / Circle to close.
-- **Restore settings** restores the multipliers and switches silent footsteps OFF.
+- Location loot quantity (up to ×5), scavenging range (up to ×3), food shelf life (up to ×5) and visual detection grace (up to +2 seconds).
+- Separate recovery sliders for item healing, food satiety and morale. Deferred item healing follows the game's phase timing and cancellation rules.
+- Notification volume slider for popup sounds, adjustable from 0 to 100%.
+- Open settings with F6 or L3+R3 even when the on-screen button is hidden. Use the arrows or D-pad/left stick to navigate or adjust, Enter or A / Cross to select, and Esc or B / Circle to close. Click a numeric field to type an exact value.
+- The panel scales to fit the screen. Background opacity, text size and window size are adjustable. **Restore settings** applies the defaults.
 
-Version **0.1.6** uses English interface text and settings comments. Fresh installations default to vanilla values.
+Version **0.1.7** uses English interface text and settings comments. Fresh installations default to vanilla gameplay.
+
+## Saved games and local backups
+
+Open **Saved games** from the mod menu to browse up to five compatible game saves and their five most recent captured phases. The game can load current saves and restore phases from the main menu or during a run. Confirming a phase restore in this view backs up and replaces the selected native slot.
+
+Choose **Back up last game save** to create or update that campaign's manual copy. **Local backups** shows the first captured save, the latest five phases and the manual copy for each archived campaign. For existing campaigns, the first captured save is the earliest copy available to the mod. Files are stored under `UserData/DarkestDaysTweaks.Backups/Local/` in the game folder.
+
+**Load local copy** opens the selected archive in a free local game slot. This workflow was verified with Steam in offline mode and preserves existing saves. A free slot is required.
 
 ## Installation
 
 1. Close the game and its loader console. Install the **official MelonLoader 0.7.3 x64** and its **.NET 6 Desktop Runtime x64** prerequisite. Get MelonLoader from [LavaGang's official release](https://github.com/LavaGang/MelonLoader/releases/tag/v0.7.3), not from this repository. **Do not launch the game yet.**
-2. Download [**MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip**](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.6/MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip) from GitHub Releases and extract it into the game root, next to `IntoTheDeadOurDarkestDays.exe`. Merge the `MelonLoader/` folder and replace the supplied compatibility files. This is the separate compatibility installation required when using the NexusMods download.
-3. Extract **DarkestDaysTweaks-0.1.6-Mod.zip**, downloaded from NexusMods or the separate mod link above, into the same game root. The result must be `Mods/DarkestDaysTweaks.dll`, not a second nested game or ZIP-name folder.
+2. Download [**MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip**](https://github.com/Airam-7/DarkestDaysTweaks/releases/download/v0.1.7/MelonLoader-Compatibility-Fix-Unity-6000.5.11f1.zip) from GitHub Releases and extract it into the game root, next to `IntoTheDeadOurDarkestDays.exe`. Merge the `MelonLoader/` folder and replace the supplied compatibility files. This is the separate compatibility installation required when using the NexusMods download.
+3. Extract **DarkestDaysTweaks-0.1.7-Mod.zip**, downloaded from NexusMods or the separate mod link above, into the same game root. The result must be `Mods/DarkestDaysTweaks.dll`, not a second nested game or ZIP-name folder.
 4. Start the game through Steam. Internet access is needed for the initial download of Unity reference libraries and generation of local IL2CPP references.
 5. Press **F6** or **L3+R3**, or click **Mod settings - F6 / L3+R3**. Pause the game before changing settings during a run. Choose **Apply and save** to confirm changes.
 
@@ -37,7 +48,7 @@ Version **0.1.6** uses English interface text and settings comments. Fresh insta
 
 If you need **only the MelonLoader compatibility fix**, use its separate Release download or copy the contents of [`compatibility/files`](compatibility/files) into the game root after installing official MelonLoader 0.7.3. These files do not install the mod.
 
-The generated settings file is `UserData/DarkestDaysTweaks.txt`. Existing values are preserved when updating the mod. An already working installation of this exact compatibility stack only needs the separate mod download from Releases or the newer mod DLL from NexusMods; there is no need to replace the generator configuration again.
+The generated settings file is `UserData/DarkestDaysTweaks.txt`. Existing values are preserved when updating the mod. You can edit and save the file while playing to reload the settings automatically, or select **Reload file** to apply them immediately. An existing working installation of this compatibility stack can update by replacing the mod DLL.
 
 ## Supported configuration
 
@@ -48,7 +59,7 @@ The generated settings file is `UserData/DarkestDaysTweaks.txt`. Existing values
 | In-game version | v0.19.1.22694 |
 | Unity | 6000.5.11f1 / metadata 107 |
 | MelonLoader | 0.7.3 Open-Beta x64 |
-| Mod source | 0.1.6 |
+| Mod source | 0.1.7 |
 
 Compatibility with other game builds, loader versions, platforms or other mods is not claimed.
 
@@ -72,17 +83,9 @@ The modified source required for the three Il2CppInterop libraries is under [`co
 
 The script builds the libraries without installing them. The separate Cpp2IL executable is an unmodified official-project CI artifact; its origin and hashes are recorded in the [compatibility documentation](compatibility/README.md).
 
-## Tests and validation
+## Validation
 
-Run the small settings regression suite without installing the game or MelonLoader:
-
-```powershell
-dotnet run --project tests/SettingsChecks -c Release
-```
-
-The thirteen checks cover native defaults, increased stacks, rounding, native sentinel values, overflow, numeric input, bounds and independent ON/OFF persistence. This repository deliberately excludes local diagnostic helpers, dumps, logs, temporary assets and personal test data.
-
-Steam startup, reference regeneration without the old generated assemblies, the English panel, manual editing and settings persistence were checked locally. Full weapon-by-weapon gameplay, zombie response and save/load coverage remain incomplete. See [validation and behavior limits](docs/VALIDATION.md).
+The release build and local regression checks passed. An archived phase loaded into a free local slot with Steam in offline mode. SHA-256 checks confirmed that all existing save files retained their contents. See [validation and behavior limits](docs/VALIDATION.md).
 
 ## Repository contents
 
@@ -92,7 +95,6 @@ Steam startup, reference regeneration without the old generated assemblies, the 
 | `compatibility/files` | Only the files needed for the loader compatibility fix |
 | `compatibility/src/Il2CppInterop` | Corresponding modified library source |
 | `scripts/Build-Compatibility.ps1` | Rebuild the modified libraries |
-| `tests/SettingsChecks` | Settings regression checks |
 | `docs` | Behavior and validation limits |
 | `licenses` | Full third-party license texts |
 

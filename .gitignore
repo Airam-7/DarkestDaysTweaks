@@ -3,6 +3,7 @@
 **/obj/
 **/Libs/
 artifacts/
+/tests/
 Mods/
 UserData/
 *.user

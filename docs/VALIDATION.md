@@ -15,7 +15,10 @@ Opening the panel pushes the game's disabled action set at critical priority and
 ## Checked locally
 
 - Release mod compilation, with no errors.
-- Thirteen automated settings regression checks.
+- 40 local regression checks for settings, phase retention, recovery safety and compatibility filtering.
+- A new campaign retained its first save and five recent phase backups after progressing to day 4.
+- A manual archive loaded from the main menu into a free local slot.
+- With Steam in offline mode, an archived phase loaded into a new local slot. All 10 pre-existing save files and backup files had identical SHA-256 hashes after the test and after Steam was reconnected.
 - Steam startup with the corrected loader dependencies.
 - Generation of fresh IL2CPP references without relying on the old generated assembly directory.
 - Retention and execution of the updated Cpp2IL through the shipped generator configuration.
